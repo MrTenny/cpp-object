@@ -1,0 +1,29 @@
+HERMETYZACJA DANYCH
+Ukrywanie pewnych danych składowych lub metod obiektów danej klasy tak,
+aby były one dostępne tylko metodom składowym tej klasy lub funkcjom zaprzyjaźnionym.
+
+private
+taki składnik jest dostępny tylko dla funkcji składowych danej klasy
+(oraz dla funkcji zaprzyjaźnionych)
+
+protected
+składnik jest dostępny tak jak składnik private ale
+dodatkowo jest jeszcze dostępny dla klas wywodzących się
+(dziedziczących) z danej klasy.
+
+public
+składnik dostępny bez ograniczeń. Zwykle są to wybrane
+metody składowe, za pomocą których dokonuje się z 
+zewnątrz operacji na danych prywatnych
+(czyli interfejs jaki świadomie udostępniamy do pracy z obiektami klasy).
+
+KONSTRUKTOR
+Specjalna metoda składowa klasy, wywoływana podczas tworzenia obiektu tej klasy.
+Zadaniem konstruktora jest zainicjowanie obiektu, czyli przypisanie atrybutom wartości startowych.
+*KONSTRUKTOR MA TAKĄ SAMĄ NAZWĘ JAK KLASA
+
+DESTRUKTOR
+Specjalna metoda, wywoływana tuż przed usunięciem obiektu, mająca za zadanie
+wykonać czynności składające się na jego zniszczenie, inne niż zwolnienie
+pamięci zajmowanej przez sam obiekt (to się dzieje automatycznie)
+*DESTRUKTOR ma nazwę identyczną jak nazwa klasy lecz poprzedzoną ~.
