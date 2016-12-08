@@ -1,0 +1,4 @@
+POLIFORMIZM
+z gr. wielopostaciowość.
+Mechanizm dający programiście możliwość wyabstrahowania podejmowanych przez metody działań od konkretnych typów danych.
+*Wiąże się z zastosowaniem polimorficznego wskaźnika do abstrakcyjnej klasy podstawowej.
