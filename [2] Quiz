@@ -1,0 +1,113 @@
+// MAIN
+#include <iostream>
+#include "pytanie.h" // wystarczy tylko .h
+using namespace std;
+
+int main()
+{
+    Pytanie p[5];
+    int suma=0;
+    for(int i=0; i<=4; i++)
+    {
+    p[i].nr_pytania=i+1;
+    p[i].wczytaj();
+    p[i].zadaj();
+    p[i].sprawdz();
+    suma+=p[i].punkt;
+    }
+
+    cout << "KONIEC QUIZU! PUNKTY=" << suma;
+
+
+
+    return 0;
+}
+
+
+
+// .H
+
+#include <iostream>
+
+using namespace std;
+
+class Pytanie
+{
+public:
+    //atrybuty
+    string tresc;
+    string a,b,c,d;
+    int nr_pytania;
+    string poprawna;
+    string odpowiedz;
+    int punkt;
+
+    void wczytaj(); // wczytuje pytania z pliku
+    void zadaj(); // pokazuje pytanie, czyta odpowiedz
+    void sprawdz(); // sprawdz
+
+};
+
+
+
+// .CPP
+
+
+
+#include <iostream>
+#include "pytanie.h" // cudzysłow oznacza; SZUKAJ PODANEJ BIBLIOTEKI W FOLDERZE Z PROJEKTEM
+#include <fstream>
+#include <cstdlib> // dla exit(0);
+
+using namespace std;
+
+void Pytanie::wczytaj() // :: operator zasiegu
+{
+    fstream plik;
+    plik.open("quiz.txt",ios::in);
+
+    if(plik.good()==false)
+    {
+        cout << "Nie udalo sie otworzyc pliku!";
+        exit(0);
+    }
+
+    int nr_linii=(nr_pytania-1)*6+1;
+    int aktualny_nr=1;
+    string linia;
+
+    while(getline(plik, linia))
+    {
+        if(aktualny_nr==nr_linii) tresc=linia;
+        if(aktualny_nr==nr_linii+1) a=linia;
+        if(aktualny_nr==nr_linii+2) b=linia;
+        if(aktualny_nr==nr_linii+3) c=linia;
+        if(aktualny_nr==nr_linii+4) d=linia;
+        if(aktualny_nr==nr_linii+5) poprawna=linia;
+
+            aktualny_nr++;
+    }
+
+    plik.close();
+}
+
+void Pytanie::zadaj()
+{
+    cout <<endl<<tresc<<endl;
+    cout <<a<<endl;
+    cout <<b<<endl;
+    cout <<c<<endl;
+    cout <<d<<endl;
+    cout << "-------------------" << endl;
+    cout <<endl<< "odpowiedz: ";
+    cin >> odpowiedz;
+}
+
+void Pytanie::sprawdz()
+{
+    if(odpowiedz==poprawna)
+    {
+        punkt=1;
+    }
+    else punkt=0;
+}
