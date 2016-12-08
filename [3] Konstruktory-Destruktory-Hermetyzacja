@@ -1,0 +1,84 @@
+//main
+#include <iostream>
+#include "program.h"
+using namespace std;
+
+int main()
+{
+    Event w1;
+
+    w1.show();
+
+    return 0;
+}
+
+
+//.h
+
+#include <iostream>
+
+using namespace std;
+
+class Event
+{
+    int day, month, year;
+    int hour, minutes;
+    string name;
+
+public:
+
+    Event(string="brak",int=1,int=1,int=2031,int=12,int=0);                    //konstruktor
+    ~Event();
+    void load();
+    void show();
+};
+
+
+// .cpp
+
+#include <iostream>
+#include "program.h"
+using namespace std;
+
+void Event::load()
+{
+    cout << "Nazwa wydarzenia: ";
+    cin >> name;
+
+    cout << "DZIEN : ";
+    cin >> day;
+
+    cout << "MIESIAC: ";
+    cin >> month;
+
+    cout << "ROK : ";
+    cin >> year;
+
+    cout << "GODZINA: ";
+    cin >> hour;
+
+    cout << "MINUT: ";
+    cin >> minutes;
+}
+
+void Event::show()
+{
+    cout << name << " " << day << " ." << month << " ." << year << " " << hour << ":" << minutes << endl;
+}
+
+Event::Event(string n,int d,int m, int y, int h, int mins)
+{
+    name=n;
+    day = d;
+    month =m;
+    year=y;
+    hour=h;
+    minutes=mins;
+}
+
+Event::~Event()
+{
+    cout << "To ja, desttruktor sie nazywam" << endl;
+    cout << " kasuje obiekty, slowa przepraszam nie uzywam" << endl;
+}
+
